@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{% static "back.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333; /* Ensures all text is dark by default */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-container {
+            background: rgb(255, 255, 255);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            width: 100%;
+            color: #333; /* Ensures text inside the glass container is dark */
+        }
+
+        .card-title {
+            color: #333; /* Ensures heading is dark */
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-text {
+            color: #333; /* Ensures text is dark */
+            font-size: 40px;
+        }
+
+        .btn-group-vertical .btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4 box-container">
+            <div class="card-body text-center">
+                <h2 class="card-title">Dashboard</h2>
+                <p class="card-text">Hi, {{ user.username }}!</p>
+                <div class="btn-group-vertical mt-3">
+                    <a href="{% url 'profile' %}" class="btn btn-primary mb-2">Profile</a>
+                    <a href="{% url 'change_password' %}" class="btn btn-secondary mb-2">Change Password</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
