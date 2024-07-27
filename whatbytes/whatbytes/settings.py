@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['whatbytes-project.onrender.com']
 CSRF_TRUSTED_ORIGINS = ['https://whatbytes-project.onrender.com']
-SECURE_SSL_REDIRECT = True
 
 # Application definition
 
