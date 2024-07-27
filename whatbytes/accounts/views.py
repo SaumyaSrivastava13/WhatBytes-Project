@@ -1,11 +1,14 @@
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
-from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth import logout
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.views import (
+    LoginView, PasswordResetView, PasswordResetDoneView, 
+    PasswordResetConfirmView, PasswordResetCompleteView
+)
 from .forms import CustomUserCreationForm
 
 class SignUpView(View):

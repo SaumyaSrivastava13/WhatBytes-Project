@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,8 @@ SECRET_KEY = 'django-insecure-(6xr%^vh#iylu8zvk!m7bzn860px*^0%82fi8x!5mo8^msj3y7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['whatbytes-project.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://whatbytes-project.onrender.com']
+ALLOWED_HOSTS = ['whatbytes-project.onrender.com', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://whatbytes-project.onrender.com', 'http://127.0.0.1:8000']
 
 # Application definition
 
@@ -40,7 +41,15 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = config('EMAIL_DEFAULT')
+
 LOGIN_REDIRECT_URL = '/accounts/dashboard/'
 
 MIDDLEWARE = [
